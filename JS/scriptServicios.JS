@@ -160,10 +160,13 @@ function renderizarCarrito() {
 function switchCarrito(e) {
     let contenedorServicios = document.getElementById("contenedorServicios")
     let contenedorCarrito = document.getElementById("contenedorCarrito")
-
+    let botonComprar = document.getElementById("comprar")
+    
     contenedorCarrito.classList.toggle("oculto")
     contenedorServicios.classList.toggle("oculto")
-
+    botonComprar.classList.toggle("oculto")
+    
+    botonComprar.addEventListener("click", finalizarCompra)
     e.target.innerText = e.target.innerText === "Ver servicios" ? "Ver carrito" : "Ver servicios"
 }
 
@@ -209,9 +212,6 @@ async function main() {
 
     if (sesionOK()) {
         renderizarCarrito()
-
-        let botonComprar = document.getElementById("comprar")
-        botonComprar.addEventListener("click", finalizarCompra)
 
         let botonOcultar = document.getElementById("ocultar")
         botonOcultar.addEventListener("click", switchCarrito)
