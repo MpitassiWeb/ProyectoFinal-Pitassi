@@ -1,5 +1,5 @@
 # **Sistema página OptiTech**
----
+
 
 Este es el proyecto creado para el curso de JavaScript, que compone el segundo curso de la carrera de Desarrollador Full Stack de Coderhouse. Está conformado por 7 páginas:
 
@@ -44,7 +44,7 @@ En el  curso _JavaScript_ hemos aprendido:
 - Frameworks y NodeJS
 
 ## Lenguajes utilizados 📖
----
+
 
 Para el proyecto se utilizaron los siguientes lenguajes:
 
@@ -53,13 +53,13 @@ Para el proyecto se utilizaron los siguientes lenguajes:
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Librerías y Frameworks 🛠️
----
+
 Sweet Alert2 2.11
 Toastify 1.12
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## Otras herramientas 🛠️
----
+
 Además utilicé estas herramientas:
 
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
@@ -67,20 +67,20 @@ Además utilicé estas herramientas:
 
 
 ## Versiones 🕵️
----
+
 | Herramienta | Versión |
 | ------ | ------ |
 | Git | 2.43.0 |
 
 
 ## Enlaces
----
+
 - [OptiTech-Solutions Deploy GitHub](https://mpitassiweb.github.io/ProyectoFinal-Pitassi)
 - [OptiTech-Solutions Repositorio GitHub](https://github.com/MpitassiWeb/ProyectoFinal-Pitassi)
 
 
 ## Installation
----
+
 En primer lugar, debes clonar el repositorio con el comando:
 
 ```sh
@@ -90,7 +90,7 @@ Y ya tienes el proyecto listo para trabajar con él y realizar las mejoras que c
 
 
 ## Autor
----
+
 **Marco Pitassi**
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marco-pitassi/)
