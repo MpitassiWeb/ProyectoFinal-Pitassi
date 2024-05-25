@@ -69,7 +69,7 @@ function crearTarjetas(servicios) {
                 <h3 class="card-title">${servicio.nombre}</h3>
                 <p class="card-text">${servicio.descripcion}</p>
                 <p class="card-text"> $${servicio.precio}</p>
-                <button class="mi-button">Ver más</button>
+                <a class="mi-button" href="./error404.html">Ver más</a>
                 <button id="${servicio.id}" class="mi-button">Agregar al carrito</button>
             </div>
         `
