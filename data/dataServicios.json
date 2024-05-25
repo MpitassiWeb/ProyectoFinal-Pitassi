@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "categoria": "MANTENIMIENTO",
+    "nombre": "Mantenimiento de PC y Notebook",
+    "descripcion": "Nuestro servicio de Mantenimiento es uno de los más completos del mercado. Y te lo vamos a detallar a continuación...",
+    "precio": 20000,
+    "img": "mantenimientoPC.webp"
+  },
+  {
+    "id": 2,
+    "categoria": "MANTENIMIENTO",
+    "nombre": "Limpieza de PC y Notebook",
+    "descripcion": "Nuestro servicio de limpieza, se enfoca más especificamente en el Hardware, en los componentes físicos...",
+    "precio": 15000,
+    "img": "limpiezaPC.webp"
+  },
+  {
+    "id": 3,
+    "categoria": "REPARACION",
+    "nombre": "Reparación de PC y Notebook",
+    "descripcion": "Nuestro servicio de reparación se centra en la búsqueda exhaustiva y diagnóstico del problema, para aplicar la solución adecuada...",
+    "precio": 30000,
+    "img": "reparacionPC.webp"
+  },
+  {
+    "id": 4,
+    "categoria": "REPARACION",
+    "nombre": "Reemplazo de componentes",
+    "descripcion": "En este caso, vamos a reemplazar un componente del equipo para optimizarlo o repararlo, implica...",
+    "precio": 5000,
+    "img": "remplazoComponentesPC.webp"
+  },
+  {
+    "id": 5,
+    "categoria": "OPTIMIZACION",
+    "nombre": "Mejora de rendimiento en PC y Notebook",
+    "descripcion": "Cuando quieras mejorar el rendimiento de tu equipo, ya sea para trabajo o gaming, elegí esta opción...",
+    "precio": 15000,
+    "img": "optimizacionPC.webp"
+  },
+  {
+    "id": 6,
+    "categoria": "OPTIMIZACION",
+    "nombre": "Actualización de PC y Notebook",
+    "descripcion": "Realizamos un Upgrade de tu equipo para llevarlo al siguiente nivel...",
+    "precio": 10000,
+    "img": "actualizacionPC.webp"
+  }
+]

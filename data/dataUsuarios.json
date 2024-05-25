@@ -1,0 +1,29 @@
+[
+  {
+    "nombre": "Prueba1",
+    "apellido": "Prueba1",
+    "email": "prueba1@prueba.com",
+    "ciudad": "",
+    "telefono": "",
+    "nombreUsuario": "Prueba",
+    "contraseña": "1234"
+  },
+  {
+    "nombre": "Prueba2",
+    "apellido": "Prueba2",
+    "email": "prueba2@prueba.com",
+    "ciudad": "",
+    "telefono": "",
+    "nombreUsuario": "test",
+    "contraseña": "test"
+  },
+  {
+    "nombre": "Prueba3",
+    "apellido": "Prueba3",
+    "email": "prueba3@prueba.com",
+    "ciudad": "",
+    "telefono": "",
+    "nombreUsuario": "TEST",
+    "contraseña": "test1234"
+  }
+]
