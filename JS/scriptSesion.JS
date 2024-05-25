@@ -1,11 +1,9 @@
 export function sesionOK() {
     let registro = JSON.parse(localStorage.getItem("registro"))
     let botonSesion = document.getElementById("botonSesion")
-    if (registro) {
-        if (registro.login) {
-            botonSesion.innerText = "Cerrar Sesión"
-            return true
-        }
+    if (registro?.login) {
+        botonSesion.innerText = "Cerrar Sesión"
+        return true
     }
     return false
 }

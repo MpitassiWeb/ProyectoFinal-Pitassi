@@ -1,14 +1,7 @@
 import { cerrarSesion, sesionOK } from "./scriptSesion.JS"
 
 function obtenerCarritoLS() {
-    let carrito = []
-
-    let carritoLS = JSON.parse(localStorage.getItem("carrito"))
-    if (carritoLS) {
-        carrito = carritoLS
-    }
-
-    return carrito
+    return JSON.parse(localStorage.getItem("carrito")) || []
 }
 
 function agregarAlCarrito(servicios, e) {
@@ -61,28 +54,29 @@ function crearTarjetas(servicios) {
     sectionOptimizacion.innerHTML = ""
 
     servicios.forEach(servicio => {
+        let { id, categoria, nombre, descripcion, precio, img } = servicio
         let tarjetaServicio = document.createElement("article")
 
         tarjetaServicio.innerHTML = `
-            <img src=../img/${servicio.img} class="card-img-top">
+            <img src=../img/${img} class="card-img-top">
             <div class="card-body">
-                <h3 class="card-title">${servicio.nombre}</h3>
-                <p class="card-text">${servicio.descripcion}</p>
-                <p class="card-text"> $${servicio.precio}</p>
+                <h3 class="card-title">${nombre}</h3>
+                <p class="card-text">${descripcion}</p>
+                <p class="card-text"> $${precio}</p>
                 <a class="mi-button" href="./error404.html">Ver más</a>
-                <button id="${servicio.id}" class="mi-button">Agregar al carrito</button>
+                <button id="${id}" class="mi-button">Agregar al carrito</button>
             </div>
         `
         tarjetaServicio.className = "card mb-3 shadow"
-        if (servicio.categoria === "MANTENIMIENTO") {
+        if (categoria === "MANTENIMIENTO") {
             sectionMantenimiento.append(tarjetaServicio)
-        } else if (servicio.categoria === "REPARACION") {
+        } else if (categoria === "REPARACION") {
             sectionReparacion.append(tarjetaServicio)
         } else {
             sectionOptimizacion.append(tarjetaServicio)
         }
 
-        let botonCarrito = document.getElementById(servicio.id)
+        let botonCarrito = document.getElementById(id)
         botonCarrito.addEventListener("click", (e) => agregarAlCarrito(servicios, e))
     })
 }
@@ -94,13 +88,9 @@ function filtrarServicios(servicios, categoria) {
 }
 
 function renderizar(servicios, categoria) {
-    let serviciosFiltrados = ""
+    let serviciosFiltrados
 
-    if (categoria === "") {
-        serviciosFiltrados = servicios
-    } else {
-        serviciosFiltrados = filtrarServicios(servicios, categoria)
-    }
+    serviciosFiltrados = categoria === "" ? (serviciosFiltrados = servicios) : (serviciosFiltrados = filtrarServicios(servicios, categoria))
 
     crearTarjetas(serviciosFiltrados)
 }
@@ -126,10 +116,8 @@ function totalCarrito() {
 }
 
 function textoCarrito(longitud) {
-    if (longitud > 0) {
-        return `Total de la compra:  $ ${totalCarrito()} `
-    }
-    return `Su carrito está vacío`
+    let cadena
+    return cadena = longitud > 0 ? `Total de la compra:  $ ${totalCarrito()} ` : `Su carrito está vacío`
 }
 
 function renderizarCarrito() {
@@ -144,19 +132,20 @@ function renderizarCarrito() {
     total.innerText = textoCarrito(longitudCarrito)
 
     carrito.forEach((servicio) => {
+        let { id, nombre, img } = servicio
         let tarjetaCarrito = document.createElement("div")
 
         tarjetaCarrito.className = "tarjetaCarrito"
         tarjetaCarrito.innerHTML = `
-            <img src=../img/${servicio.img}>
-            <h3>${servicio.nombre}</h3>
+            <img src=../img/${img}>
+            <h3>${nombre}</h3>
             <p> Unidades: ${servicio.unidades}</p>
             <p> Precio: $${servicio.subtotal}</p>
-            <button id="carrito${servicio.id}" class="mi-button">Eliminar</button>
+            <button id="carrito${id}" class="mi-button">Eliminar</button>
         `
         contenedor.append(tarjetaCarrito)
 
-        let botonEliminar = document.getElementById(`carrito${servicio.id}`)
+        let botonEliminar = document.getElementById(`carrito${id}`)
         botonEliminar.addEventListener("click", function (e) {
             eliminarServicio(e)
             longitudCarrito--
@@ -175,11 +164,7 @@ function switchCarrito(e) {
     contenedorCarrito.classList.toggle("oculto")
     contenedorServicios.classList.toggle("oculto")
 
-    if (e.target.innerText === "Ver servicios") {
-        e.target.innerText = "Ver carrito"
-    } else {
-        e.target.innerText = "Ver servicios"
-    }
+    e.target.innerText = e.target.innerText === "Ver servicios" ? "Ver carrito" : "Ver servicios"
 }
 
 function finalizarCompra() {
