@@ -4,7 +4,7 @@ function obtenerCarritoLS() {
     let carrito = []
 
     let carritoLS = JSON.parse(localStorage.getItem("carrito"))
-    if(carritoLS){
+    if (carritoLS) {
         carrito = carritoLS
     }
 
@@ -12,9 +12,9 @@ function obtenerCarritoLS() {
 }
 
 function agregarAlCarrito(servicios, e) {
-    
+
     let carrito = obtenerCarritoLS()
-    
+
     let idServicio = Number(e.target.id)
     let posicion = carrito.findIndex((service) => service.id === idServicio)
     let servicioBuscado = servicios.find((service) => service.id === idServicio)
@@ -24,13 +24,13 @@ function agregarAlCarrito(servicios, e) {
         text: `Se agregó ${servicioBuscado.nombre}`,
         duration: 3000,
         close: true,
-        gravity: "top", 
-        position: "right", 
-        stopOnFocus: true, 
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
         style: {
-          background: "#202022",
+            background: "#202022",
         },
-        onClick: function(){} 
+        onClick: function () { }
     }).showToast()
 
     if (posicion !== -1) {
@@ -74,19 +74,18 @@ function crearTarjetas(servicios) {
             </div>
         `
         tarjetaServicio.className = "card mb-3 shadow"
-        if(servicio.categoria === "MANTENIMIENTO"){
+        if (servicio.categoria === "MANTENIMIENTO") {
             sectionMantenimiento.append(tarjetaServicio)
-        }else if(servicio.categoria === "REPARACION")
-        {
+        } else if (servicio.categoria === "REPARACION") {
             sectionReparacion.append(tarjetaServicio)
-        }else{
+        } else {
             sectionOptimizacion.append(tarjetaServicio)
         }
 
         let botonCarrito = document.getElementById(servicio.id)
         botonCarrito.addEventListener("click", (e) => agregarAlCarrito(servicios, e))
     })
-} 
+}
 
 
 function filtrarServicios(servicios, categoria) {
@@ -94,12 +93,12 @@ function filtrarServicios(servicios, categoria) {
     return serviciosFiltrados;
 }
 
-function renderizar(servicios, categoria) { 
+function renderizar(servicios, categoria) {
     let serviciosFiltrados = ""
 
-    if(categoria === ""){
+    if (categoria === "") {
         serviciosFiltrados = servicios
-    }else{
+    } else {
         serviciosFiltrados = filtrarServicios(servicios, categoria)
     }
 
@@ -109,7 +108,7 @@ function renderizar(servicios, categoria) {
 function eliminarServicio(e) {
     let carrito = obtenerCarritoLS()
     let id = Number(e.target.id.substring(7))
-    
+
     carrito = carrito.filter((servicio) => servicio.id !== id)
 
     localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -126,14 +125,14 @@ function totalCarrito() {
     return total;
 }
 
-function textoCarrito(longitud){
-    if(longitud > 0){
+function textoCarrito(longitud) {
+    if (longitud > 0) {
         return `Total de la compra:  $ ${totalCarrito()} `
     }
     return `Su carrito está vacío`
 }
 
-function renderizarCarrito(){
+function renderizarCarrito() {
     let carrito = obtenerCarritoLS()
 
     let longitudCarrito = carrito.length
@@ -158,7 +157,7 @@ function renderizarCarrito(){
         contenedor.append(tarjetaCarrito)
 
         let botonEliminar = document.getElementById(`carrito${servicio.id}`)
-        botonEliminar.addEventListener("click", function(e){
+        botonEliminar.addEventListener("click", function (e) {
             eliminarServicio(e)
             longitudCarrito--
             total.innerText = textoCarrito(longitudCarrito)
@@ -176,16 +175,16 @@ function switchCarrito(e) {
     contenedorCarrito.classList.toggle("oculto")
     contenedorServicios.classList.toggle("oculto")
 
-    if(e.target.innerText === "Ver servicios"){
+    if (e.target.innerText === "Ver servicios") {
         e.target.innerText = "Ver carrito"
-    }else{
+    } else {
         e.target.innerText = "Ver servicios"
     }
 }
 
 function finalizarCompra() {
     let carrito = obtenerCarritoLS()
-    if (carrito.length === 0){
+    if (carrito.length === 0) {
         Swal.fire({
             title: 'Error!',
             text: 'Su carrito está vacío',
@@ -193,7 +192,7 @@ function finalizarCompra() {
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#202022'
         })
-    }else{
+    } else {
         Swal.fire({
             title: '¡Felicitaciones!',
             text: 'Compra finalizada con éxito',
@@ -206,9 +205,9 @@ function finalizarCompra() {
     }
 }
 
-async function cargarServicios (){
+async function cargarServicios() {
     try {
-        const response = await fetch ("../data/dataServicios.json")
+        const response = await fetch("../data/dataServicios.json")
         const servicios = await response.json()
         return servicios
     } catch (error) {
@@ -223,7 +222,7 @@ async function main() {
     let botonSesion = document.getElementById("botonSesion")
     let sectionServicios = document.getElementById("sectionServicios")
 
-    if(sesionOK()){
+    if (sesionOK()) {
         renderizarCarrito()
 
         let botonComprar = document.getElementById("comprar")
@@ -235,7 +234,7 @@ async function main() {
         let drop = document.getElementById("dropDown")
         renderizar(servicios, "")
         drop.addEventListener("change", () => renderizar(servicios, drop.value))
-    }else{
+    } else {
         sectionServicios.innerHTML = ""
         sectionServicios.className = "container"
 
@@ -246,7 +245,7 @@ async function main() {
             confirmButtonColor: '#202022'
         })
 
-        let noSesion = document.createElement ("div")
+        let noSesion = document.createElement("div")
         noSesion.innerHTML = `
             <a href="./login.html"> Iniciar Sesión </a>
         `

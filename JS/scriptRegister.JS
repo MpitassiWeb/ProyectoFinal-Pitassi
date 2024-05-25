@@ -18,7 +18,7 @@ async function registrarse() {
 
     let usuarioBD = usuarios.findIndex((user) => user.nombreUsuario === nuevoUsuario.nombreUsuario)
 
-    if((nuevoUsuario.nombre === '') || (nuevoUsuario.apellido === '') || (nuevoUsuario.email === '') || (nuevoUsuario.nombreUsuario === '') || (nuevoUsuario.contraseña === '')){
+    if ((nuevoUsuario.nombre === '') || (nuevoUsuario.apellido === '') || (nuevoUsuario.email === '') || (nuevoUsuario.nombreUsuario === '') || (nuevoUsuario.contraseña === '')) {
         Swal.fire({
             title: '¡Error!',
             text: 'Agregar los datos obligatorios (*) para el registro',
@@ -26,7 +26,7 @@ async function registrarse() {
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#202022'
         })
-    }else if((usuarioBD !== -1)){
+    } else if ((usuarioBD !== -1)) {
         Swal.fire({
             title: '¡Error!',
             text: 'El usuario ya existe. ¡Prueba con otro!',
@@ -34,9 +34,9 @@ async function registrarse() {
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#202022'
         })
-    }else{
+    } else {
         usuarios.push(nuevoUsuario);
-    
+
         Swal.fire({
             title: '¡Felicitaciones!',
             text: `${nuevoUsuario.nombreUsuario} te has registrado correctamente`,
@@ -47,9 +47,9 @@ async function registrarse() {
     }
 }
 
-async function cargarUsuarios (){
+async function cargarUsuarios() {
     try {
-        const response = await fetch ("../data/dataUsuarios.json")
+        const response = await fetch("../data/dataUsuarios.json")
         const usuarios = await response.json()
         return usuarios
     } catch (error) {
@@ -59,7 +59,7 @@ async function cargarUsuarios (){
 }
 
 function main() {
-    if(sesionOK()){
+    if (sesionOK()) {
         Swal.fire({
             text: 'Ya has iniciado sesión',
             confirmButtonText: 'Aceptar',
@@ -68,7 +68,7 @@ function main() {
         let botonSesion = document.getElementById("botonSesion")
         botonSesion.innerText = "Cerrar Sesión"
         botonSesion.addEventListener("click", cerrarSesion)
-    }else{
+    } else {
         let botonRegistrar = document.getElementById("botonRegistrar")
         botonRegistrar.addEventListener("click", registrarse)
     }

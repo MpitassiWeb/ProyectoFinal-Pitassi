@@ -1,6 +1,6 @@
-async function cargarUsuarios (){
+async function cargarUsuarios() {
   try {
-    const response = await fetch ("../data/dataUsuarios.json")
+    const response = await fetch("../data/dataUsuarios.json")
     const usuarios = await response.json()
     return usuarios
   } catch (error) {
@@ -14,11 +14,11 @@ async function login() {
   let contraseñaIngresada = document.getElementById("inputPsw").value
 
   document.getElementById("formLogin").reset()
-  
+
   let usuarios = await cargarUsuarios()
 
   let indice = usuarios.findIndex((user) => user.nombreUsuario === usuarioIngresado)
-  
+
   let registro = {
     login: false,
     usuario: " ",
@@ -35,7 +35,7 @@ async function login() {
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#202022'
     })
-  }else if (usuarios[indice].contraseña === contraseñaIngresada) {
+  } else if (usuarios[indice].contraseña === contraseñaIngresada) {
     registro.login = true;
     registro.usuario = usuarios[indice].nombreUsuario;
     localStorage.setItem("registro", JSON.stringify(registro))
@@ -48,7 +48,7 @@ async function login() {
     })
     let botonSesion = document.getElementById("botonSesion")
     botonSesion.innerText = "Cerrar Sesión"
-  }else{
+  } else {
     registro.comentario = "La contraseña ingresada es Incorrecta"
     localStorage.setItem("registro", JSON.stringify(registro))
     Swal.fire({
